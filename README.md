@@ -1,0 +1,13 @@
+基于自行封装脚手架（魔改cola（整洁架构))支持jdk17及springboot3
+
+orm使用jpa，支持自动ddl，为了做demo速度尽量快
+
+controller入口在blog-web-adapter下，如需微服务支持，请声明接口在blog-web-client包下，blog-web-adapter实现，consumer引入生产者的client包即，也方便后续框架改变例如openfeign换dubbo甚至grpc
+
+简单鉴权使用Filter,在FilterConfig中进行filter注册
+鉴权token后根据token解析id，查询user信息放在UserContext（ThreadLocal）中，在controller中直接获取即可）中,数据库查询并不是一个好方式，具体商业项目优化，鉴权后接口按需要对比是否操作的是自己的内容
+
+前后端分离项目，且单体可能需要允许跨域（微服务项目网关跨域即可），CorsConfig中允许跨域
+
+DockerFile中仅做了最简单的镜像构建及端口暴露及启动命令，jdk17建议给个最大最小堆（建议一致）即可，可自行修改
+建议通过helm方式去操作k8s集群部署
