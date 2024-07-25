@@ -5,7 +5,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://guojiawei.mysql.rds.aliyuncs.com:3306/blog?currentSchema=public&sslmode=disable&ssl=false&timezone=Asia/Shanghai
     username: root
-    password: Guojiawei123!
+    password: ''
 
   jpa:
     hibernate:
